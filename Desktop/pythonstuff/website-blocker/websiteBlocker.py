@@ -6,6 +6,10 @@ from datetime import datetime as dt
 # importing datetime twice like this so we can do dt.now()
 # otherwise it have to be datetime.datetime.now()
 
+# start and end times for 'working hours' in 24 hour time
+start = 9
+end = 17
+
 # must put one site on each line, no quotes
 # should put both 'www.facebook.com' and 'facebook.com'
 nameOfFilesWithSites = 'badSites.txt'
@@ -31,7 +35,7 @@ f.close()
 while True:
     rn = dt.now()
     # if in working hours
-    if dt(rn.year, rn.month, rn.day, 9) < rn < dt(rn.year, rn.month, rn.day, 17):
+    if dt(rn.year, rn.month, rn.day, start) < rn < dt(rn.year, rn.month, rn.day, end):
         print('Do some work :)')
 
         # write to the hosts_path file
@@ -59,4 +63,3 @@ while True:
         print('have funnn!!!')
     # will update every hour
     time.sleep(3600)
-
